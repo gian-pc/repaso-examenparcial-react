@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import Espectaculo from "./Components/Espectaculo";
 import { espectaculos } from "./espectaculos";
+import Form from "./Components/Form";
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   return (
     <>
       {
-        isSelected ? <form>formulario</form> : null
+        isSelected ? <Form/> : null
       }
       {espectaculos.map((elemento) => (
         <Espectaculo setisSelected={setisSelected} elemento={elemento} key={elemento.id} />
