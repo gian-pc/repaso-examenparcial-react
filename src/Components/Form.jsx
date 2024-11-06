@@ -1,40 +1,72 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import Card from "./Card";
 
-const Form = () => {
-    // estados
-    const [comprador, setComprador] = useState({
-        nombre: "",
-        email: ""
-    })
+const Form = ({ artista }) => {
+  //estados
+  const [comprador, setComprador] = useState({
+    nombre: "",
+    email: "",
+  });
 
-    // validaciones
-    let regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-    if(comprador.nombre.length > 6 && comprador.nombre.includes(" ") && regexEmail.test(comprador.email)){
 
+  const [mostrar, setMostrar] = useState(false);
+  const [error, setError] = useState(false);
+
+
+  //onSubmit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    //validaciones
+    let regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (
+      comprador.nombre.length > 6 &&
+      comprador.nombre.includes("") &&
+      regexEmail.test(comprador.email)
+    ) {
+      setMostrar(true);
+      
+    } else {
+      setError(true);
+      
     }
+  };
 
-    // onSubmit
-    const handleSubmit = (e)=>{
-        e.preventDefault()
-    }
+  return (
+    <div>
+      {/* mostrar un error */}
+      {mostrar ? (
+        <Card nombre={comprador.nombre} artista={artista} />
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <label>Nombre completo:</label>
+          <input
+            type="text"
+            value={comprador.nombre}
+            //onchange
+            onChange={(e) =>
+              setComprador({ ...comprador, nombre: e.target.value })
+            }
+          />
+          <label>Email:</label>
+          <input
+            type="email"
+            value={comprador.email}
+            //onchange
+            onChange={(e) =>
+              setComprador({ ...comprador, email: e.target.value })
+            }
+          />
+          <button>Comprar entrada</button>
+          {error ? (
+            <h4 style={{ color: "red" }}>
+              Coloque la información correctamente
+            </h4>
+          ) : null}
+        </form>
+      )}
+    </div>
+  );
+};
 
-    
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>Nombre completo:</label>
-                // onChange
-                <input type="text" onChange={(e) => setComprador({ ...comprador, nombre: e.target.value })} />
-
-                <label>Email:</label>
-                // onChange
-                <input type="email" onChange={(e) => setComprador({ ...comprador, email: e.target.value })} />
-                <button>Comprar entrada</button>
-            </form>
-            // mostrar un error
-        </div>
-        
-    )
-}
-
-export default Form
+export default Form;

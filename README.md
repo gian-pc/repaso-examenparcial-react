@@ -7,6 +7,9 @@
 4. Movemos el boton a Espectaculo y añadimos un nuevo prop(setisSelected)
 5. Agregamos un nuevo componente **Form**
 6. Implementamos el **Form**
+7. Agregamos un nuevo componente **Card** para manejar las validaciones
+
+### Resultado Final![alt text](image.png)
 
 
 

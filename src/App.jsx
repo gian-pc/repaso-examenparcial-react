@@ -6,20 +6,28 @@ import { espectaculos } from "./espectaculos";
 import Form from "./Components/Form";
 
 
+
 function App() {
 
 
-  const [isSelected, setisSelected] = useState(false)
+  const [isSelected, setisSelected] = useState({
+    artista: null,
+    status: false
+  });
 
   return (
     <>
       {
-        isSelected ? <Form/> : null
+        isSelected.status ? <Form artista={isSelected.artista} /> : null
       }
       {espectaculos.map((elemento) => (
-        <Espectaculo setisSelected={setisSelected} elemento={elemento} key={elemento.id} />
+        <Espectaculo
+          setisSelected={setisSelected}
+          elemento={elemento}
+          key={elemento.id}
+        />
       ))}
-      
+
     </>
 
   )
