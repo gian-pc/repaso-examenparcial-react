@@ -1,12 +1,13 @@
 import React from 'react'
 
-const Espectaculo = ({elemento}) => {
+const Espectaculo = ({elemento, setisSelected}) => {
     return (
         <div key={elemento.id}>
             <img src={elemento.img} alt="" />
             <h3>{elemento.artista}</h3>
             <h4>{elemento.fecha}</h4>
             <h2>{elemento.precio}</h2>
+            <button onClick={()=>setisSelected(true)}>Quiero ir</button>
         </div>
     )
 }

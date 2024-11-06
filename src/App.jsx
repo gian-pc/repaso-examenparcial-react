@@ -16,9 +16,9 @@ function App() {
         isSelected ? <form>formulario</form> : null
       }
       {espectaculos.map((elemento) => (
-        <Espectaculo elemento={elemento} key={elemento.id} />
+        <Espectaculo setisSelected={setisSelected} elemento={elemento} key={elemento.id} />
       ))}
-      <button onClick={()=>setisSelected(true)}>Quiero ir</button>
+      
     </>
 
   )
